@@ -3,6 +3,20 @@
 
 using namespace std;
 
+
+
+template <class T>
+bool maxHepify(T first, T second){
+    return first > second;
+}
+template <class T>
+bool minHepify(T first, T second){
+    return first < second;
+}
+
+
+
+
 template <class T>
 class dynamicArray{
 private:
@@ -193,6 +207,18 @@ public:
         array = new dynamicArray<T>();
         size = 0;
     }
+
+    Heap(dynamicArray<T> * arr){
+        array = new dynamicArray<T>();
+        size = 0;
+        for(int i = 0; i<arr->length;i++){
+            this->add(arr->index2(i), minHepify);
+        }
+        for(int i = 0; i<arr->length;i++){
+            T temp = this->deleteFirst(minHepify);
+            arr->change(i,temp);
+        }
+    }
     T * getIndex(int index){
         return array->index(index);
     }
@@ -225,11 +251,4 @@ public:
 
 };
 
-template <class T>
-bool maxHepify(T first, T second){
-    return first > second;
-}
-template <class T>
-bool minHepify(T first, T second){
-    return first < second;
-}
+
