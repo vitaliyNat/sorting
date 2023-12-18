@@ -11,7 +11,7 @@ bool maxHepify(T first, T second){
 }
 template <class T>
 bool minHepify(T first, T second){
-    return first < second;
+    return !(first > second);
 }
 
 
@@ -147,6 +147,7 @@ private:
         value1 = value2;
         value2 = temp;
     }
+
 
 
     void heapifyUp(int index,bool (*cmp)(T,T)){
